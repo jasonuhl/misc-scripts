@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ "$1" ]
+then
+	comment="$1-`date --iso-8601`"
+	file="id_$comment"
+else
+	comment="`whoami`@`hostname`-`date --iso-8601`"
+	file="id_ed25519"
+fi
+ssh-keygen -t ed25519 -C "$comment" -f "$file"
